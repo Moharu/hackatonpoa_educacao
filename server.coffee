@@ -1,3 +1,7 @@
+port = process.env.VCAP_APP_PORT or 8080
+hostname = process.env.VCAP_APP_HOST or 'localhost'
+
+
 restify = require 'restify'
 estaduais = require './routes/estaduais'
 federais = require './routes/federais'
@@ -10,4 +14,4 @@ server.use restify.CORS()
 server.get '/estaduais', estaduais
 server.get '/federais', federais
 
-server.listen 8080
+server.listen port, hostname
